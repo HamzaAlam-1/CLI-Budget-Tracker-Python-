@@ -1,0 +1,62 @@
+import json
+import os
+
+DATA_FILE = "transactions.json"
+
+def load_transactions():
+    if not os.path.exists(DATA_FILE):
+        return []
+    with open(DATA_FILE, "r") as file:
+        return json.load(file)
+
+def save_transactions(transactions):
+    with open(DATA_FILE, "w") as file:
+        json.dump(transactions, file, indent=4)
+
+def add_transaction(transactions, amount, category, description):
+    transaction = {
+        "amount": amount,
+        "category": category,
+        "description": description
+    }
+    transactions.append(transaction)
+    save_transactions(transactions)
+
+def calculate_balance(transactions):
+    return sum(t["amount"] for t in transactions)
+
+def print_transactions(transactions):
+    for t in transactions:
+        print(f'{t["category"]}: ${t["amount"]} - {t["description"]}')
+    print(f"\nCurrent Balance: ${calculate_balance(transactions)}")
+
+def main():
+    transactions = load_transactions()
+
+    while True:
+        print("\n1. Add Income")
+        print("2. Add Expense")
+        print("3. View Transactions")
+        print("4. Exit")
+
+        choice = input("Choose an option: ")
+
+        if choice == "1":
+            amount = float(input("Enter income amount: "))
+            add_transaction(transactions, amount, "Income", "Income added")
+
+        elif choice == "2":
+            amount = float(input("Enter expense amount: "))
+            add_transaction(transactions, -amount, "Expense", "Expense added")
+
+        elif choice == "3":
+            print_transactions(transactions)
+
+        elif choice == "4":
+            break
+
+        else:
+            print("Invalid option.")
+
+if __name__ == "__main__":
+    main()
