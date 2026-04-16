@@ -1,4 +1,4 @@
-Create CLI Budget Tracker (Python)
+CLI Budget Tracker (Python)
 
 
 I built a simple command-line budget tracker that allows users to:
