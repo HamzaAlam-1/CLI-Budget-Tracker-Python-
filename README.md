@@ -3,12 +3,12 @@ Create CLI Budget Tracker (Python)
 
 I built a simple command-line budget tracker that allows users to:
 
-Add income and expenses
+-Add income and expenses
 
-View transaction history
+-View transaction history
 
-Calculate total balance
+-Calculate total balance
 
-Persist data in a JSON file
+-Persist data in a JSON file
 
 I used an AI coding tool (Claude Code) to help scaffold the file structure, refactor logic into clean functions, and improve input validation.
